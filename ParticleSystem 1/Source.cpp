@@ -118,6 +118,7 @@ void modifyPms(sf::Event& event)
 
 		// Cycle textures
 		sf::Texture* temp;
+		sf::Time newTTL = TTL + sf::seconds(rand(10) - 5);
 		switch (static_cast<int>(pms.size()) % 3)
 		{
 		case 0:
@@ -131,7 +132,7 @@ void modifyPms(sf::Event& event)
 			break;
 		}
 
-		ParticleManager pm(500, *temp, TTL, sf::Vector2i(event.mouseButton.x, event.mouseButton.y), window_size);
+		ParticleManager pm(500, *temp, newTTL, sf::Vector2i(event.mouseButton.x, event.mouseButton.y), window_size);
 		pms.push_back(pm.setGravity(GRAVITY));
 	}
 	else if (event.mouseButton.button == sf::Mouse::Button::Right)
